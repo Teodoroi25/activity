@@ -1,0 +1,120 @@
+print ("=====================================================================")
+
+print ("\n")
+
+print (" MEDICAL CALCULATOR ")
+
+print ("\n")
+
+print ("=====================================================================")
+
+enter_calc = input("Press ENTER key and fill out the following to start calculating.")
+
+
+
+def calculate_bmi(weight, height):
+
+    bmi = weight / (height ** 2)
+
+    return bmi
+
+   
+
+def calculate_heart_rate(age):
+
+    max_heart_rate = 220 - age
+
+    target_heart_rate = 0.5 * max_heart_rate
+
+    return target_heart_rate
+
+
+def calculate_daily_calorie_needs(weight, height, age, gender, activity_level):
+
+    if gender == 'male':
+
+        bmr = 66 + (13.75 * weight) + (0.050 * height) - (6.76 * age)
+
+    else:
+
+        bmr = 655 + (9.56 * weight) + (0.019 * height) - (4.70 * age)
+
+
+    if activity_level == 'sedentary':
+
+        calorie_needs = bmr * 1.2
+
+    elif activity_level == 'lightly active':
+
+        calorie_needs = bmr * 1.375
+
+    elif activity_level == 'moderately active':
+
+        calorie_needs = bmr * 1.55
+
+    elif activity_level == 'very active':
+
+        calorie_needs = bmr * 1.725
+
+    else:
+
+        calorie_needs = bmr * 1.9
+
+
+    return calorie_needs
+
+print ('_____________________________________________________________________')
+
+
+weight = float(input("WEIGHT (kg): "))
+
+height = float(input("HEIGHT (m): "))
+
+age = int(input("AGE (years): "))
+
+gender = input("GENDER (F/M): ")
+
+activity_level = input("ACTIVITY LEVEL (sedentary /lightly active /moderately active /very active /extremely active): ")
+
+
+print ("\n----------------------------RESULTS-----------------------------")
+
+
+bmi = calculate_bmi(weight, height)
+
+print("BMI:", bmi)
+
+
+if bmi <= 18.4:
+
+    print("-> Underweight")
+
+elif 18.5 <= bmi <= 24.9:
+
+    print("-> Normal weight")
+
+elif 25.0 <= bmi <= 29.9:
+
+    print("-> Overweight")
+
+elif 30.0 <= bmi <= 34.9:
+
+    print("-> Obese")
+
+elif bmi >= 40.0:
+
+    print ("-> Extremely Obese")
+
+else:
+
+    print("INVALID")
+
+
+heart_rate = calculate_heart_rate(age)
+
+print("Target Heart Rate:", heart_rate)
+
+
+calorie_needs = calculate_daily_calorie_needs(weight, height, age, gender, activity_level)
+
+print("Daily Calorie Needs:", calorie_needs)
